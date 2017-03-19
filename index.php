@@ -3,22 +3,18 @@
 include 'lib/bones.php';
 
 get('/', function($app){
-	echo "Home";
+	// echo "Home";
+	$app->set('message', 'Welcome Back!');
+	$app->render('home');
 
 });
 
 get('/signup',function($app){
-	echo "Signup";
+	// echo "Signup";
+	$app->render('signup');
 });
-
  
-// function execFN($callback){
-// 	echo $callback();
-// }
-//
-// echo execFN('function name(){
-// 	echo \'Ehab\';
-// }');
+
 
 
 ?>
