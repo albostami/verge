@@ -14,7 +14,10 @@ get('/signup',function($app){
 	$app->render('signup');
 });
  
-
+post ('/signup', function($app){
+	$app->set('message', 'Thanks for Signing Up ' . $app->form('name') . '!');
+	$app->render('home');
+});
 
 
 ?>
