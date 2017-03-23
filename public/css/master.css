@@ -1,0 +1,27 @@
+* {
+    margin: 0   ;
+    padding: 0  ;
+    box-sizing: border-box;
+    
+/*    border: 0;*/
+}
+
+*:focus {
+    outline: none;
+}
+
+html,
+body {
+    background: #e4e4e4           ;
+/*    color: #555                         ;*/
+/*    font: inherit;*/
+    font-family: 'Lato', sans-serif     ;
+    font-weight: 300                    ;
+    font-size: 20px                     ;
+    text-rendering: optimizeLegibility  ;
+    
+/*    vertical-align: baseline;*/
+    
+    overflow-x: hidden                  ;
+    
+}
