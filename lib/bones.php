@@ -62,9 +62,9 @@
 		  $url_parts = explode('/', trim($route, '/'));
 		  $matched = null;
 		  
-		  echo '$url_parts:' ;
-		  print_r($url_parts);
-		  echo '<br />';
+		  // echo '$url_parts:' ;
+// 		  print_r($url_parts);
+// 		  echo '<br />';
    
 
 		  if (count($bones->route_segments) == count($url_parts)){
