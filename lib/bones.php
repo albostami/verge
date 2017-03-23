@@ -30,11 +30,15 @@
 	  
 	  public function __construct() {
 		  $this->route = $this->get_route()	  ;
+		  
+		  // echo '<br/>' . $this->route . '<br/>' ;
+		  // echo '<br/>' . trim($this->route, '/') . '<br />' ;
+		  
 		  $this->route_segments = explode('/', trim($this->route, '/')) ;
           
-		//   echo 'route_segments : ' ; 
-		//   print_r($this->route_segments) ;
-		//   echo '<br/>';
+		  // echo '<br/>' . 'route_segments : ' ;
+		  // print_r($this->route_segments) ;
+		  // echo '<br/>';
 
 		  $this->method = $this->get_method() ;
 
@@ -49,18 +53,18 @@
 	  }
 	  
       public static function register($route, $callback, $method) {
-		//   echo 'register method' . '<br/>' ;
-		//   echo '$route: ' . $route . '<br/>' ;
-		//   echo '$method: ' . $method . '<br/>' ;
+		  // echo '<br/>' . 'register method' . '<br/>' ;
+		  // echo '$route: ' . $route . '<br/>' ;
+		  // echo '$method: ' . $method . '<br/>' ;
 		  
 		if(!static::$route_found) {
 		  $bones = static::get_instance()	;
 		  $url_parts = explode('/', trim($route, '/'));
 		  $matched = null;
 		  
-		//   echo '$url_parts:' ;
-		//   print_r($url_parts);
-		//   echo '<br />';
+		  echo '$url_parts:' ;
+		  print_r($url_parts);
+		  echo '<br />';
    
 
 		  if (count($bones->route_segments) == count($url_parts)){
@@ -91,10 +95,10 @@
 			  }
 		  } else {
 
-			  //Routes are different lengths
-			//   echo 'false' . '<br/>' ;
+			  // Routes are different lengths
+			  // echo 'false' . '<br/>' ;
 
-			  $matched = fales ;
+			  $matched = false ;
 		  }
 		  if (!$matched || $bones->method != $method){
 			  return false;
@@ -112,16 +116,16 @@
 	  protected function get_route() {
 		  parse_str($_SERVER['QUERY_STRING'], $route)	;
 
-		//   echo '$route: ' ;	
-		//   print_r($route);
-		//   echo '<br/>';	  
+		  // echo '$route: ' ;
+	  // 		  print_r($route);
+	  // 		  echo '<br/>';
 
 		  if($route){
 			//   echo 'route chnaged to: ' ;
 			//   echo '/'.$route['request'] ;
 			//   echo '<br />' ;
 
-			  return '/'.$route['request']				;
+			  return '/' . $route['request']				;
 		  } else {
 			//   echo 'route chnaged to: ' ;
 			//   echo '/' ;
@@ -132,6 +136,7 @@
 	  }
 	  
 	  protected function get_method() {
+		  // echo '<br />' . $_SERVER['REQUEST_METHOD'] . '<br />' ;
 		  return isset($_SERVER['REQUEST_METHOD'])? $_SERVER['REQUEST_METHOD']: 'GET' ;
 	  }
 	  
