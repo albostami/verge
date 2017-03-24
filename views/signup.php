@@ -1,8 +1,20 @@
 Signup Now!
-
-<form action="<?php echo $this->make_route('/signup')?>" 
-	method ="post" >
-	<label for ="name">Name </label>
-	<input id ="name" name="name" type="text"> <br/>
+<div class="container">
+ <form action="<?php echo $this->make_route('/signup')?>" method ="post" >
+  <div class="row" >	
+	<label class ="col span-1-of-12" for ="name">Name </label>
+	<div class="col span-1-of-12">
+		<input id ="name" name="name" type="text"> 
+	</div>
+  </div>
+  <div class="row"> 		
+	<label class ="col span-1-of-12" for="email">Email</label>
+	<div class ="col span-1-of-12">
+		<input id="email" name="email" type="text"> 
+	</div>
+  </div>
+  <div class="row">		
 	<input type="Submit" value="Submit">
-</form>
+  </div>
+ </form>
+</div>
