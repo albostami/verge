@@ -4,6 +4,11 @@
   error_reporting(E_ERROR|E_PARSE);
   
   define ('ROOT', __DIR__ . '/..');
+  require_once ROOT . '/lib/sag/src/Sag.php';
+  
+  function __autoload($classname) {
+	  include_once(ROOT . "/classes/" . strtolower($classname) . ".php"); 
+  }
   
   function get($route,$callback) {
 	 Bones::register($route,$callback, 'GET');
@@ -27,6 +32,7 @@
 	  public $vars	  = array()				;
 	  public $route_segments = array()		;
 	  public $route_varialbles = array()	;
+	  public $couch;
 	  
 	  public function __construct() {
 		  $this->route = $this->get_route()	  ;
@@ -41,8 +47,10 @@
 		  // echo '<br/>';
 
 		  $this->method = $this->get_method() ;
-
 		//   echo 'Method: ' . $this->method . '<br/>';
+		
+		$this->couch = new Sag('127.0.0.1', '5984');
+		$this->couch->setDatabase('verge');
 	  }
 	  
 	  public static function get_instance() {
