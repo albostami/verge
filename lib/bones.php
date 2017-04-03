@@ -4,6 +4,8 @@
   error_reporting(E_ERROR|E_PARSE);
   
   define ('ROOT', __DIR__ . '/..');
+  
+  require_once ROOT . '/lib/bootstrap.php'	;
   require_once ROOT . '/lib/sag/src/Sag.php';
   
   function __autoload($classname) {
@@ -175,6 +177,17 @@
 		   } else {
 			   return '/' . $url[1] . $path;
 		   }
+	   }
+	   
+	   public function display_alert($variable ='error') {
+		   if (isset ($this->vars[$variable])) {
+			   return "<div class='alert alert-" . $variable . "'><a href='#' class='close' data-dismiss='alert'>x</a>" 
+				   . $this->vars[$variable] . "</div>";
+		   }
+	   }
+	   
+	   public function redirect($path = '/') {
+		   header ('Location: ' . $this->make_route($path));
 	   }
 	  
   }	
