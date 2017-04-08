@@ -54,9 +54,15 @@
 
 		  $this->method = $this->get_method() ;
 		//   echo 'Method: ' . $this->method . '<br/>';
+		// try {
+			$this->couch = new Sag('127.0.0.1', '5984');
+			$this->couch->setDatabase('verge');
+		// } catch (SagCouchException $e) {
+// 			$this->error500($e) ;
+// 			exit;
+// 		}
 		
-		$this->couch = new Sag('127.0.0.1', '5984');
-		$this->couch->setDatabase('verge');
+		
 	  }
 	  
 	  public static function get_instance() {
